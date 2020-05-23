@@ -27,5 +27,5 @@ and `ssl` is the Postgres SSL setting (e.g. disable for postgres, false for mysq
 ## Example
 
 ~~~bash
-./encryptSecrets -u root -p marlow11 -dbName goblender -dbtype mysql -ssl false
+./encryptSecrets -u root -p somepassword -dbName goblender -dbtype mysql -ssl false
 ~~~
