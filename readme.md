@@ -21,8 +21,8 @@ env GOOS=linux GOARCH=amd64  go build -o encryptSecrets *.go
 ./encryptSecrects -u username -p password -db databaseName -dbtype postgres -s ssl 
 ~~~
 
-where `username` and `password` are the db credentials, dbtype is the database type, -db is the datbase name, 
-and `ssl` is the Postgres SSL setting (e.g. disable for postgres, false for mysql). You can optionally specify `-key`
+where `-u` and `-p` are the db credentials, `-dbtype` is the database type, `-db` is the database name, 
+and `-s` is the database SSL setting (e.g. disable for postgres, false for mysql). You can optionally specify `-key`
 as well, providing a 32 character encryption key. If none is provided, one will be generated.
 
 The secret key is also written to stdout, and to a file called `urlSignerSecret.txt`
