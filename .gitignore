@@ -3,4 +3,4 @@ ui/*
 client/*
 migrateDocs
 urlSignerSecret.txt
-
+encryptSecrets
