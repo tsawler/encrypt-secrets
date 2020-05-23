@@ -22,10 +22,13 @@ env GOOS=linux GOARCH=amd64  go build -o encryptSecrets *.go
 ~~~
 
 where `username` and `password` are the db credentials, dbtype is the database type, -db is the datbase name, 
-and `ssl` is the Postgres SSL setting (e.g. disable for postgres, false for mysql).
+and `ssl` is the Postgres SSL setting (e.g. disable for postgres, false for mysql). You can optionally specify `-key`
+as well, providing a 32 character encryption key. If none is provided, one will be generated.
+
+The secret key is also written to stdout, and to a file called `urlSignerSecret.txt`
 
 ## Example
 
 ~~~bash
-./encryptSecrets -u root -p somepassword -dbName goblender -dbtype mysql -ssl false
+./encryptSecrets -u homestead -p 'secret' -db goblender -dbtype mysql -s false -key rHbaqmfdhmdrDDPIytYhwSRzcvpOesjZ
 ~~~
