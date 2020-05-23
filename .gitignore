@@ -1,7 +1,4 @@
 .idea
-ui/*
-client/*
-migrateDocs
 urlSignerSecret.txt
 encryptSecrets
 encryptSecrets-linux
