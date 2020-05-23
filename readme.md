@@ -32,3 +32,12 @@ The secret key is also written to stdout, and to a file called `urlSignerSecret.
 ~~~bash
 ./encryptSecrets -u homestead -p 'secret' -db goblender -dbtype mysql -s false -key rHbaqmfdhmdrDDPIytYhwSRzcvpOesjZ
 ~~~
+
+
+## After Running
+
+Once the run is done, do the following:
+
+1. Update the secret in `/etc/supervisor/conf.d/whatever.conf`
+1. Run update.sh
+1. Restart the process in supervisorctl
