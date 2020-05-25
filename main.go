@@ -44,7 +44,6 @@ func main() {
 	errorLog := log.New(os.Stderr, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
 
 	dbHost := "127.0.0.1"
-	dbPort := "5432"
 
 	// read flags
 	dbUser := flag.String("u", "", "DB Username")
@@ -52,10 +51,11 @@ func main() {
 	dbSsl := flag.String("s", "disable", "SSL Settings")
 	databaseName := flag.String("db", "", "Database name")
 	dbType := flag.String("dbtype", "", "Database type (postgres or mysql")
+	dbPort := flag.String("port", "", "Database type (postgres or mysql")
 	keyPtr := flag.String("key", "", "Secret key (32 chars)")
 	flag.Parse()
 
-	if *dbUser == "" || *databaseName == "" || *dbType == "" || *dbSsl == "" {
+	if *dbUser == "" || *databaseName == "" || *dbType == "" || *dbSsl == "" || *dbPort == "" {
 		fmt.Println("Missing required flags.")
 		os.Exit(1)
 	}
@@ -78,12 +78,12 @@ func main() {
 
 	if *dbType == "postgres" {
 		if *dbPass == "" {
-			dsn = fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=%s timezone=UTC connect_timeout=5", dbHost, dbPort, *dbUser, *databaseName, *dbSsl)
+			dsn = fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=%s timezone=UTC connect_timeout=5", dbHost, *dbPort, *dbUser, *databaseName, *dbSsl)
 		} else {
-			dsn = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s timezone=UTC connect_timeout=5", dbHost, dbPort, *dbUser, *dbPass, *databaseName, *dbSsl)
+			dsn = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s timezone=UTC connect_timeout=5", dbHost, *dbPort, *dbUser, *dbPass, *databaseName, *dbSsl)
 		}
 	} else {
-		dsn = fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true&tls=%s&collation=utf8_unicode_ci&timeout=5s&readTimeout5s", *dbUser, *dbPass, dbHost, "3306", *databaseName, *dbSsl)
+		dsn = fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true&tls=%s&collation=utf8_unicode_ci&timeout=5s&readTimeout5s", *dbUser, *dbPass, dbHost, *dbPort, *databaseName, *dbSsl)
 	}
 
 	// open connection to db
@@ -104,7 +104,7 @@ func main() {
 		db: db,
 	}
 
-	secrets := []string {
+	secrets := []string{
 		"do-secret",
 		"mailchimp-key",
 		"pusher-secret",
@@ -133,7 +133,5 @@ func main() {
 		}
 	}
 
-
 	infoLog.Println("Done!")
 }
-
