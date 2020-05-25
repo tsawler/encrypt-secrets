@@ -59,5 +59,5 @@ Once the run is complete, do the following:
 
 1. Update the secret in `/etc/supervisor/conf.d/whatever.conf`
 1. Run update.sh
-1. If necessary, add the key to supervisort configuration
+1. If necessary, add the key to supervisor configuration
 1. Restart the process in supervisorctl
