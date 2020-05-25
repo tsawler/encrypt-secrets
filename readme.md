@@ -18,7 +18,7 @@ env GOOS=linux GOARCH=amd64  go build -o encryptSecrets *.go
 4: Run with flags:
 
 ~~~bash
-./encryptSecrects -u username -p password -db databaseName -dbtype postgres -s ssl  -port port
+./encryptSecrects -u username -p password -db databaseName -dbtype postgres -s ssl -port port
 ~~~
 
 The flags:
