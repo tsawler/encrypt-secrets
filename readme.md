@@ -24,7 +24,7 @@ env GOOS=linux GOARCH=amd64  go build -o encryptSecrets *.go
 The flags:
 
 ~~~bash
-tcs@Trevors-iMac encrypt-secrets % ./encryptSecrets -help                                            
+% ./encryptSecrets -help                                            
 Usage of ./encryptSecrets:
   -db string
         Database name
