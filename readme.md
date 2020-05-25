@@ -49,7 +49,7 @@ The secret key is also written to stdout, and to a file called `urlSignerSecret.
 ## Example
 
 ~~~bash
-./encryptSecrets -u homestead -p 'secret' -db goblender -dbtype mysql -s false -key rHbaqmfdhmdrDDPIytYhwSRzcvpOesjZ
+./encryptSecrets -u homestead -p 'secret' -db goblender -dbtype mysql -port 3306 -s false -key rHbaqmfdhmdrDDPIytYhwSRzcvpOesjZ
 ~~~
 
 
